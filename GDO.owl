@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#"
+     xml:base="http://www.semanticweb.org/chase/ontologies/2016/1/GDO"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#hasTreatment -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#hasTreatment"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Analysis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Analysis"/>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Case -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Case">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Condition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Cell -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Cell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#SourceType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Condition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Condition">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#hasTreatment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Treatment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Control -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Control">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Condition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#DNA -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#DNA">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Human -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Human">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#SourceOrganism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#NoTreatment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#NoTreatment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Treatment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#OtherAnalysis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#OtherAnalysis">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#OtherOrganism -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#OtherOrganism">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#SourceOrganism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Protein -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Protein">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#RNA -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#RNA">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#SourceOrganism -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#SourceOrganism"/>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#SourceType -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#SourceType"/>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Tissue -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Tissue">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#SourceType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Treatment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/chase/ontologies/2016/1/GDO#Treatment"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
