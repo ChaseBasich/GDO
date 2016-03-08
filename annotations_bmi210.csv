@@ -1,0 +1,11 @@
+Experiment,ConditionName,ConditionID,Technology,SourceOrganismName,SourceOrganismID,SourceTypeName,TreatmentName,TreatmentID,ContributionCountryName,PubMedID
+GSE1563,Renal transplant rejection,236570004,RNA,Homo sapiens,NCBITaxon_9606,tissue,immunosuppression,,USA,15307835
+GSE53605,Renal transplant rejection,236570004,RNA,Homo sapiens,NCBITaxon_9606,tissue,immunosuppression,,USA,24698514
+GSE9493,Renal transplant rejection,236570004,RNA,Homo sapiens,NCBITaxon_9606,tissue,immunosuppression,,Switzerland,19191772
+GSE21374,Renal transplant rejection,236570004,RNA,Homo sapiens,NCBITaxon_9606,tissue,immunosuppression,,USA,20501945
+GSE50058,Renal transplant rejection,236570004,RNA,Homo sapiens,NCBITaxon_9606,tissue,immunosuppression,,USA,24127489
+GSE15296,Kidney Transplant Rejection,213150003,RNA,Homo Sapiens,NCBITaxon_9606,Tissue,,,USA,24725967
+GSE51676,Kidney Transplant Rejection,213150003,RNA,Homo Sapiens,NCBITaxon_9606,Tissue,,,Italy,25925804
+GSE39220,Neoplasm of Breast,126926005,RNA,Mus Musculus,NCBITaxon_10090,TIssue,,,USA,2886304
+GSE46600,Diabetes Mellitus,73211009,RNA,,CLO_0000031,Cell Line,,,USA,24918037
+GSE41558,Cardiac Stress State,432655005,RNA,,NCBITaxon_10090,TIssue,,,USA,23300926
