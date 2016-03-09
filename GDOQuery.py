@@ -152,9 +152,13 @@ class Node:
 			self.column = values[0]
 			self.term = values[1]
 
+			self.options = [self.term]
+
+			if self.category.upper() not in ["SOURCEORGANISM", "CONDITION"]:
+				return
+
 			queryString = self.getInitialQueryString(self.term)
 			queue = query.query(queryString)
-			self.options = [self.term]
 
 			self.queryTerm(queue, 0)
 
@@ -247,7 +251,7 @@ class GDO:
 
 if __name__ == "__main__":
     query = Query()
-    node = Node("ConditionName:Renal Transplant Rejection or ConditionName:Neoplasm of Breast and not SourceOrganismID:NCBITaxon_10090".split(), query)
+    node = Node("SourceTypeName:Cell Line or ConditionName:Renal Transplant Rejection or ConditionName:Neoplasm of Breast and not SourceOrganismID:NCBITaxon_10090".split(), query)
     gdo = GDO()
     gdo.parseCSV("annotations_bmi210.csv")
     results = node.eval(gdo.getInstances())
