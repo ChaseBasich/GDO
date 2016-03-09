@@ -222,9 +222,9 @@ class Node:
 
 			else:
 				for instance in instances:
-					if instance[self.column] in self.options and not self.NotNode:
+					if instance[self.column].upper() in [x.upper() for x in self.options] and not self.NotNode:
 						results.append(instance)
-					elif instance[self.column] not in self.options and self.NotNode:
+					elif instance[self.column].upper() not in [x.upper() for x in self.options] and self.NotNode:
 						results.append(instance)
 
 			return results
@@ -247,7 +247,7 @@ class GDO:
 
 if __name__ == "__main__":
     query = Query()
-    node = Node("ConditionID:236570004 AND NOT ConditionID:236574008".split(), query)
+    node = Node("ConditionName:Renal Transplant Rejection or ConditionName:Neoplasm of Breast and not SourceOrganismID:NCBITaxon_10090".split(), query)
     gdo = GDO()
     gdo.parseCSV("annotations_bmi210.csv")
     results = node.eval(gdo.getInstances())
