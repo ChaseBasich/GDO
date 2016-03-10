@@ -1,7 +1,14 @@
 from SPARQLWrapper import SPARQLWrapper, JSON, XML, N3, RDF
+
+import urllib2
+import json
+import os
+
 import pdb
 import csv
 import re
+
+
 
 #parse query, make sure it is well formed
 #for each part of the query
@@ -14,7 +21,7 @@ import re
 	#def __init__(self, input):
 
 
-
+#not currently supported because SPARQL went down,
 class Query:
 	def __init__(self):
 		self.SnoMedGraph = "http://bioportal.bioontology.org/ontologies/SNOMEDCT"
@@ -64,7 +71,8 @@ WHERE
 {
     ?x rdfs:subClassOf <%s> .
     ?x skos:prefLabel ?label.
-}""" % (graph, id)
+}
+""" % (graph, id)
 
 		return queryString
 
@@ -85,8 +93,8 @@ WHERE
     ?x rdfs:subClassOf ?y .
     ?x skos:prefLabel ?label
 }
-""" % (graph, name)
-	
+
+""" % (graph, name.upper())
 		return queryString
 
 	def getQueryIDString(self, category, id):
@@ -104,8 +112,8 @@ WHERE
 {
     ?x rdfs:subClassOf pref:%s .
     ?x skos:prefLabel ?label
-}""" % (pref, graph, id)
-
+}
+""" % (pref, graph, id)
 		return queryString
 
 
@@ -152,13 +160,22 @@ class Node:
 			self.column = values[0]
 			self.term = values[1]
 
-			self.options = [self.term]
+			self.options = [self.term.upper()]
 
 			if self.category.upper() not in ["SOURCEORGANISM", "CONDITION"]:
 				return
 
 			queryString = self.getInitialQueryString(self.term)
 			queue = query.query(queryString)
+
+			for result in queue:
+					if self.type.upper() == "ID":
+						matches = re.match(".*/([^/]+)$", result['x']['value'])
+						id = matches.group(1)
+						self.options.append(id.upper())
+						print id
+					elif self.type.upper() == "NAME":
+						self.options.append(result['label']['value'].upper())
 
 			self.queryTerm(queue, 0)
 
@@ -183,9 +200,9 @@ class Node:
 					if self.type.upper() == "ID":
 						matches = re.match(".*/([^/]+)$", result['x']['value'])
 						id = matches.group(1)
-						self.options.append(id)
+						self.options.append(id.upper())
 					elif self.type.upper() == "NAME":
-						self.options.append(result['label']['value'])
+						self.options.append(result['label']['value'].upper())
 
 			if not newQueue:
 				return
@@ -209,7 +226,6 @@ class Node:
 
 		def eval(self, instances):
 			results = []
-
 			if self.children:
 				if self.join == 'AND':
 					childSet1 = self.children[0].eval(instances)
@@ -226,9 +242,9 @@ class Node:
 
 			else:
 				for instance in instances:
-					if instance[self.column].upper() in [x.upper() for x in self.options] and not self.NotNode:
+					if instance[self.column].upper() in self.options and not self.NotNode:
 						results.append(instance)
-					elif instance[self.column].upper() not in [x.upper() for x in self.options] and self.NotNode:
+					elif instance[self.column].upper() not in self.options and self.NotNode:
 						results.append(instance)
 
 			return results
@@ -251,12 +267,19 @@ class GDO:
 
 if __name__ == "__main__":
     query = Query()
-    node = Node("SourceTypeName:Cell Line or ConditionName:Renal Transplant Rejection or ConditionName:Neoplasm of Breast and not SourceOrganismID:NCBITaxon_10090".split(), query)
     gdo = GDO()
     gdo.parseCSV("annotations_bmi210.csv")
-    results = node.eval(gdo.getInstances())
+    instances = gdo.getInstances()
+    with open("output.txt", 'w') as fout:
+	    with open("input.txt", 'r') as fin:
+	    	for line in fin:
+	    		line.rstrip()
+		    	node = Node(line.split(), query)
+		    	results = node.eval(instances)
+		    	fout.write(line + "\n")
+		    	for result in results:
+		    		fout.write(result["Experiment"] + "\n")
 
-    for result in results:
-    	print result["Experiment"]
+		    	fout.write("\n")
 
 
