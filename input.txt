@@ -1,2 +1,1 @@
-ConditionName:Renal Transplant Rejection and not ContributionCountryName:Switzerland
-SourceOrganismName:Homo Sapiens
+ConditionName:Renal Transplant Rejection or ConditionID:213150003 and ContributionCountryName:USA or ContributionCountryName:Canada

@@ -1,28 +1,14 @@
-ConditionName:Renal Transplant Rejection and not ContributionCountryName:Switzerland
-
-GSE1563
-GSE53605
-GSE21374
-GSE50058
-GSE15296
-GSE51676
-GSE23503
-GSE60420
-GSE49460
-GSE15858
-
-SourceOrganismName:Homo Sapiens
+ConditionName:Renal Transplant Rejection or ConditionID:213150003 and ContributionCountryName:USA or ContributionCountryName:Canada
 GSE1563
 GSE53605
 GSE9493
 GSE21374
 GSE50058
+GSE47097
+GSE48581
+GSE50084
+GSE36059
 GSE15296
 GSE51676
-GSE23503
-GSE75092
-GSE98293
-GSE40676
-GSE60420
-GSE49460
+GSE15296
 

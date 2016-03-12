@@ -173,7 +173,6 @@ class Node:
 						matches = re.match(".*/([^/]+)$", result['x']['value'])
 						id = matches.group(1)
 						self.options.append(id.upper())
-						print id
 					elif self.type.upper() == "NAME":
 						self.options.append(result['label']['value'].upper())
 
